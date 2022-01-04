@@ -4,13 +4,14 @@ import csv
 from datetime import datetime
   
 # api-endpoint
-URL = "http://store.steampowered.com/appreviews/230410?json=1?"
+URL = "http://store.steampowered.com/appreviews/291550?json=1?"
 cursor = "*"
-
+# insert header to csv
 header = ['date', 'reviews', 'voted_up']
-with open('reviews.csv', 'w', encoding='UTF8', newline='') as f:
+with open('reviews1.csv', 'w', encoding='UTF8', newline='') as f:
     writer = csv.writer(f)
     writer.writerow(header)
+
 # defining a params dict for the parameters to be sent to the API
     while(cursor != None):
         PARAMS = {
@@ -25,7 +26,7 @@ with open('reviews.csv', 'w', encoding='UTF8', newline='') as f:
         # sending get request and saving the response as response object
         r = requests.get(url = URL, params = PARAMS)
         
-        # extracting data in json format
+        # extracting data in json format and writing to CSV, and updating cursor value for next batch
         data = r.json()
         reviews = data["reviews"]
         cursor = data["cursor"]
