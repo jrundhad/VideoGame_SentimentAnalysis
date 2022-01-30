@@ -13,7 +13,9 @@ with open('reviews.csv','r') as csvinput:
                 writer.writerow(row+["Sentiment"])
             else:
                 x= analyzer.predict([row[1]])
-                writer.writerow(row+x)
+                print(x)
+                writer.writerow(row)
+            
 
 # csv_input = pd.read_csv('reviews.csv')
 # csv_input['Sentiment'] = analyzer.predict(str(csv_input['reviews'])).output
