@@ -35,6 +35,6 @@ with open('reviews.csv', 'w', encoding='UTF8', newline='') as f:
         for review in reviews:
             print(review['review'])
             print(datetime.fromtimestamp(review['timestamp_updated']))
-            header = [datetime.fromtimestamp(review['timestamp_updated']), review['review'], review['voted_up']]
-            writer.writerow(header)      
+            entry = [datetime.fromtimestamp(review['timestamp_updated']), review['review'], review['voted_up']]
+            writer.writerow(entry)      
   
